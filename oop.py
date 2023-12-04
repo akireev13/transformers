@@ -45,8 +45,8 @@ class MyUltraTransformer(Filter):
         #mix pixels
         n = len(self.arr)
         m = len(self.arr[0])
-        for i in range(0, n // 2):
-            for j in range(0, m // 2): 
+        for i in range(0, n):
+            for j in range(0, m): 
                 self.arr[i][j], self.arr[n-i-1][m-j-1] = self.arr[n-i-1][m-j-1], self.arr[i][j]
 
     def SaveImage(self, destination):
