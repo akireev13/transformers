@@ -41,6 +41,13 @@ class MyUltraTransformer(Filter):
             for j in range(0, len(self.arr[i])): # row number from 0 to 15
                 r, g, b = self.arr[i][j] # get rgb values for the pixel
                 self.arr[i][j] = [g, b, r] # mix rgb values
+        
+        #mix pixels
+        n = len(self.arr)
+        m = len(self.arr[0])
+        for i in range(0, n // 2):
+            for j in range(0, m // 2): 
+                self.arr[i][j], self.arr[n-i-1][m-j-1] = self.arr[n-i-1][m-j-1], self.arr[i][j]
 
     def SaveImage(self, destination):
         return super().SaveImage(destination)
@@ -73,10 +80,10 @@ def main():
     transformer2.SaveImage("data/test_ultra_little.png")
 
 
-    # big pic
+    # # big pic
     image_file = "data/test_cut_big.png"
 
-    # to gray
+    # # to gray
 
     transformer = GrayScaleTransformer(image_file)
 
@@ -84,7 +91,7 @@ def main():
     transformer.transform()
     transformer.SaveImage("data/test_gray_big.png")
 
-    # shuffle channels
+    # # shuffle channels
 
     transformer2 = MyUltraTransformer(image_file)
 
